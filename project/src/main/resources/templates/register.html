@@ -5,58 +5,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration and Login System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-.text-center {
-  text-align: center;
-}
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .text-danger {
+            color: #dc3545;
+        }
 
-.form-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-}
+        .navbar-custom {
+            padding-left: 50px;
+            padding-right: 50px;
+            background-color: #333;
+            color: #fff;
 
-.form-label {
-  margin-bottom: 5px;
-}
+        }
 
-.form-control {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
 
-.text-danger {
-  color: red;
-  font-size: 0.8em;
-}
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
 
-.success-message {
-  color: green;
-  font-weight: bold;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 4px;
-}
+        .footer-section {
+            max-width: 300px;
+        }
     </style>
 </head>
 <body>
+  <nav class="navbar navbar-custom navbar-expand-lg sticky-top navbar-dark ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Job-job</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="#">FAQ</a>
+                <form class="container-fluid justify-content-start">
+                    <button class="btn btn-outline-success me-2" type="button" th:href="@{/register}">Sign in</button>
+                    <button class="btn btn-outline-primary me-2" type="button" th:href="@{/login}">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
 <div class="form-container">
   <div>
     <div>
       <div>
           <h2 class="text-center">Registration</h2>
       </div>
-      <div th:if="${param.success}">
+      <div th:if="${param.success}" class="alert alert-success mt-3">
           <div>
             You have created an account!
           </div>
@@ -69,8 +83,8 @@
             th:object="${user}"
           >
 
-          <div>
-            <label class="form-label">First Name</label>
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name</label>
             <input
                     class="form-control"
                     id="firstName"
@@ -83,8 +97,8 @@
             th:if="${#fields.hasErrors('firstName')}"></p>
           </div>
 
-          <div>
-            <label class="form-label">Last Name</label>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name</label>
             <input
                     class="form-control"
                     id="lastName"
@@ -97,8 +111,8 @@
                th:if="${#fields.hasErrors('lastName')}"></p>
           </div>
 
-            <div>
-              <label class="form-label">Email</label>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
               <input
                       class="form-control"
                       id="email"
@@ -111,8 +125,8 @@
                  th:if="${#fields.hasErrors('email')}"></p>
             </div>
 
-            <div>
-              <label class="form-label">Password</label>
+            <div class="form-group">
+              <label class="form-label" for="password">Password</label>
               <input
                       class="form-control"
                       id="password"
@@ -133,5 +147,38 @@
     </div>
   </div>
 </div>
+
+<footer>
+  <div class="footer-container">
+      <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#jobs">Jobs</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: info@jobjob.com</p>
+          <p>Phone: (123) 456-7890</p>
+      </div>
+
+      <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <ul class="social-icons">
+              <li><a href="#" target="_blank"><img src="@{/images/facebook-icon.png}" alt="Facebook"></a></li>
+              <li><a href="#" target="_blank"><img src="@{/images/twitter_s_icon.png}" alt="Twitter"></a></li>
+              <li><a href="#" target="_blank"><img src="@{/images/linkedin_s_icon.png}" alt="LinkedIn"></a></li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="copyright">
+      <p>&copy; 2023 Job-job. All rights reserved.</p>
+  </div>
+</footer>
 </body>
 </html>
