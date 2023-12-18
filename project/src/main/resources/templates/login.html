@@ -56,13 +56,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/index}">Home</a>
                     <a class="nav-link" href="#">About</a>
                     <a class="nav-link" href="#">Contact</a>
                     <a class="nav-link" href="#">FAQ</a>
                     <form class="container-fluid justify-content-start">
-                        <button class="btn btn-outline-success me-2" type="button" th:href="@{/register}">Sign in</button>
-                        <button class="btn btn-outline-primary me-2" type="button" th:href="@{/login}">Login</button>
+                        <a class="btn btn-outline-success me-2" type="button" th:href="@{/register}">Sign in</a>
+                        <a class="btn btn-outline-primary me-2" type="button" th:href="@{/login}">Login</a>
                     </form>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 <h2 class="text-center">Login</h2>
             </div>
             <div>
-                <form method="post" role="form" th:action="@{/login}" class="form-horizontal">
+                <form method="post" role="form" th:action="@{/login/submit}" class="form-horizontal">
                     <div class="form-group">
                         <label for="username" class="control-label">Email</label>
                         <input type="text" id="username" name="username" class="form-control"
